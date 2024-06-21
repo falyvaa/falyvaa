@@ -1,0 +1,204 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #24425a;
+}
+
+.digital-clock {
+    color: #fff;
+    position: relative;
+    background-color: #24425a;
+    width: 400px;
+    height: 250px;    
+    padding: 20px 45px;
+    box-shadow: 0 5px 25px rgba(14, 21, 37, .8);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.digital-clock::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(45deg, #24ff6d, #426cd7, #dd2bc9);
+    background-size: 200% 200%;
+    inset: -5px;
+    z-index: -1;
+    filter: blur(40px);
+    animation: glowing 10s ease infinite;
+}
+
+@keyframes glowing {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+.dot-menu-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: #efefef;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.dot-menu {
+    z-index: 999;
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    list-style: none;
+    background: #285c8c;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .5);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+.dot-menu.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.clock-format-text {
+    color: #a8bccb;
+    font-size: .9em;
+    margin-right: 20px;
+}
+
+.format-switch-btn {
+    width: 35px;
+    height: 15px;
+    background: #485470;
+    border-radius: 75px;
+    box-shadow: inset 2px 2px 4px rgba(255, 255, 255, .1),
+                inset -2px -2px 4px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.format-switch-btn:before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #203146;
+    border-radius: 50%;
+    box-shadow: 0 5px 25px #203146;
+    transform: translateX(-10px);
+    transition: .3s ease;
+    transition-property: background-color, transform;
+}    
+
+.format-switch-btn.active::before {
+    background: #bad6d9;
+    box-shadow: 0 5px 25px #7ad6d9;
+    transform: translateX(10px);
+}
+
+.time {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hours, .dots, .minutes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    padding: 0 10px;
+    line-height: 125px;
+}
+
+.hours, .minutes {
+    font-size: 5em;
+    width: 100px
+}
+
+.dots {
+    font-size: 5em;
+    color: #929292;
+}
+
+.hours, .minutes {
+    background: -webkit-linear-gradient(90deg, #0c66bb, #a8bccb);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.right-side {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.period, .seconds {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.period {
+    transform: translateY(-20px);
+    background: -webkit-linear-gradient(90deg, #0c66bb, #a8bccb);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.seconds {
+    transform: translateY(16px);
+    background: -webkit-linear-gradient(90deg, #0c66bb, #a8bccb);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-bottom: 5px;
+    background: -webkit-linear-gradient(90deg, #0c66bb, #a8bccb);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.month-name, .year, .day-name {
+    margin-left: 8px;
+}
